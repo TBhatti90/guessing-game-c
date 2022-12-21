@@ -24,7 +24,7 @@ int main()
 		return -1;
 
 	/* DeMorgan's Law */
-	while (!(strcmp(input, "YES") && strcmp(input, "Yes") && strcmp(input, "Y") && strcmp(input, "y")))
+	while (!(strcmp(input, "YES") && strcmp(input, "Yes") && strcmp(input, "yes") && strcmp(input, "Y") && strcmp(input, "y")))
 	{
 		/* Initializes pseudo-random number generator using the current time. */
 		srand((unsigned)time(&t));
