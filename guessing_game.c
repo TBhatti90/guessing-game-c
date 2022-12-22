@@ -6,7 +6,7 @@
 int main()
 {
 	int secret;
-	int guess = -1;
+	int guess;
 	int c;
 	char buf[20];
 	char input[20];
@@ -23,12 +23,13 @@ int main()
 	if (sscanf(buf, "%s", input) == EOF)
 		return -1;
 
+	/* Initializes pseudo-random number generator using the current time. */
+	srand((unsigned)time(&t));
+	secret = rand();
+
 	/* DeMorgan's Law */
 	while (!(strcmp(input, "YES") && strcmp(input, "Yes") && strcmp(input, "yes") && strcmp(input, "Y") && strcmp(input, "y")))
 	{
-		/* Initializes pseudo-random number generator using the current time. */
-		srand((unsigned)time(&t));
-		secret = rand();
 
 		printf("Please enter your guess: ");
 		if (fgets(buf, 20, stdin) == NULL)
@@ -43,6 +44,8 @@ int main()
 
 		if (guess == secret)
 			printf("You got it! The secret was %d\n", secret);
+			/* If user guessed correctly, randomize the new secret value. */
+			secret = rand();
 		else
 			printf("Aww you missed.\n");
 
