@@ -43,11 +43,15 @@ int main()
 			return -1;
 
 		if (guess == secret)
+		{
 			printf("You got it! The secret was %d\n", secret);
 			/* If user guessed correctly, randomize the new secret value. */
 			secret = rand();
+		}
 		else
+		{
 			printf("Aww you missed.\n");
+		}
 
 		printf("Would you like to try again?\n");
 		if (fgets(buf, 20, stdin) == NULL)
